@@ -5,10 +5,8 @@ var Pirate = Model({
     this.name = name;
     this.grogs = 0;
   },
-
   drink: function(){
-    this.grogs++;
-    if (this.grogs > 100){
+    if (++this.grogs > 100){
       this.trigger("drunk");
     }
   },
@@ -17,10 +15,9 @@ var Pirate = Model({
   }
 });
 
-var jack = new Pirate("Jack");
+var captain = new Pirate("Jack"),
+  grogCount = 110;
 
-jack.on("drunk", jack.sing);
+captain.on("drunk", captain.sing);
 
-for (var i=0; i<110; i++){
-  jack.drink();
-}
+while (grogCount--){ captain.drink(); }
