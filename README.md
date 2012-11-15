@@ -46,7 +46,7 @@ jack.on("drunk", jack.sing);
 for (var i=0; i<110; i++){
   jack.drink();
 }
-``
+```
 
 ### Install
 
