@@ -1,26 +1,26 @@
 var Model = require("./fishbone");
 
-var Whale = Model({
+var Pirate = Model({
   init: function(name){
     this.name = name;
+    this.grogs = 0;
   },
-  kill: function(){
-    this.trigger("dead");
+
+  drink: function(){
+    this.grogs++;
+    if (this.grogs > 100){
+      this.trigger("drunk");
+    }
+  },
+  sing: function(){
+    console.log("ARR: " + this.name + " WANT MORE!");
   }
 });
 
-var moby = new Whale("Dick");
+var jack = new Pirate("Jack");
 
-var boom = function(){
-  console.log(moby.name, "died");
-};
+jack.on("drunk", jack.sing);
 
-moby.on("dead", function(){
-  console.log(moby.name, "died");
-});
-
-moby.on("dead", boom);
-moby.on("dead", boom);
-moby.off("dead", boom);
-
-moby.kill();
+for (var i=0; i<110; i++){
+  jack.drink();
+}

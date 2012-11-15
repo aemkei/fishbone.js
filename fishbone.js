@@ -1,25 +1,14 @@
-!function(undefined){
-  
-  function bindAll(target, object) {
-    var method, property;
-
-    for (property in object) {
-      method = object[property];
-      if (object.hasOwnProperty(property) && typeof method == 'function') {
-        target[property] = method.bind(target);
-      }
-    }
-  }
-
-  function observable(object){
-    var observers = {};
+function Model(object){
+  return function(options){
     
-    object.on = function(event, listener){
+    var target = this, observers = {}, method, property;
+  
+    target.on = function(event, listener){
       var listeners = observers[event] || (observers[event] = []);
       listeners.push(listener);
     };
     
-    object.trigger = function(event, data){
+    target.trigger = function(event, data){
       for (
         var listeners = observers[event], index = 0;
         listeners && index < listeners.length;
@@ -29,7 +18,7 @@
       }
     };
 
-    object.off = function (event, listener) {
+    target.off = function (event, listener) {
       for (
         var listeners = observers[event] || [], index;
         listener && (index = listeners.indexOf(listener)) > -1;
@@ -39,18 +28,18 @@
 
       observers[event] = listeners;
     };
-  }
 
-  this.Model = function(object){
-    return function(options){
-      observable(this);
-      bindAll(this, object);
-      this.init(options);
-    };
+    for (property in object) {
+      method = object[property];
+      if (object.hasOwnProperty(property) && typeof method == 'function') {
+        target[property] = method.bind(target);
+      }
+    }
+
+    target.init(options);
   };
+};
 
-  if (typeof module == "object"){
-    module.exports = this.Model;
-  }
-
-}();
+if (typeof module == "object"){
+  module.exports = Model;
+}
