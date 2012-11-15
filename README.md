@@ -13,7 +13,8 @@ A super lightweight JavaScript library - made for hungy pirates.
 
 ### Usage
 
-* `Model({ init: function(options){} })` - Creates a new model
+* `Model({ init: function(options){} })` - create a model
+* `new Model(options)` - create an instance
 * `#on(event, listener)` - observe a given event
 * `#off(event, [listener])` - remove listener
 * `#trigger(event, data)` - triggers an event
@@ -45,7 +46,7 @@ jack.on("drunk", jack.sing);
 for (var i=0; i<110; i++){
   jack.drink();
 }
-```
+``
 
 ### Install
 
@@ -59,6 +60,11 @@ indexOf(b))>-1;)c.splice(e,1);d[a]=c};for(f in a)e=a[f],a.hasOwnProperty(f)
 &&typeof e=="function"&&(c[f]=e.bind(c));c.init(b)}}typeof module=="object"
 &&(module.exports=Model);
 ```
+
+### Todo
+
+Add simple chaining by comparing return values with `undefined`.
+
 
 ### About
 
