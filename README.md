@@ -63,6 +63,12 @@ typeof e=="function"&&(c[f]=function(){var a=this.apply(c,arguments);return a
 ===g?c:a}.bind(e));c.init(b)}}typeof module=="object"&&(module.exports=Model);
 ```
 
+Install via npm:
+
+```sh
+npm install fishbone
+```
+
 
 ### About
 
