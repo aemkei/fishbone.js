@@ -77,7 +77,7 @@ hasOwnProperty(e)&&(c[e]=typeof f=="function"?function(){var a=this.apply
 =="object"&&(module.exports=Model);
 ```
 
-Install via npm:
+Install via [npm](https://npmjs.org/package/fishbone):
 
 ```sh
 npm install fishbone
