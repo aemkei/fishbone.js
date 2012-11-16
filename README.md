@@ -4,7 +4,8 @@ A super lightweight (½kb) JavaScript library – made for hungy pirates.
 
 ### Features
 
-* clean and simple constructor
+* clean and simple syntax
+* steep learning curve
 * `this` is the context in all methods
 * automatic method chaining
 * `on`, `off` event observer pattern
