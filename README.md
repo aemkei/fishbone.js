@@ -5,9 +5,9 @@ A super lightweight (½kb) JavaScript library – made for hungy pirates.
 ### Features
 
 * clean and simple constructor
-* scoped instance methods
-* event observer pattern
+* `this` is the context in all methods
 * automatic method chaining
+* `on`, `off` event observer pattern
 * no dependencies
 * cross browser & [Node.js](http://nodejs.org) support
 * < 512 bytes minified (300 gzip)
@@ -23,45 +23,43 @@ A super lightweight (½kb) JavaScript library – made for hungy pirates.
 ### Example
 
 ```js
-var Model = require("./fishbone");
+var Model = require("./fishbone");              // require module (Node only)
 
-var Pirate = Model({
-
-  likes: "GROG",
-
-  init: function(name){
-    this.name = name;
+var Pirate = Model({                            // simple class creator
+  likes: "GROG",                                // instance properties
+  init: function(name){                         // init is the main entrance
+    this.name = name;                           // options can be passed
     this.grogs = 0;
   },
-  drink: function(){
+  drink: function(){                            // instance method
     if (++this.grogs >= 100){
-      this.trigger("drunk");
+      this.trigger("drunk");                    // trigger an event
     }
   },
   yell: function(){
-    console.log(this. name + " WANT MORE: " + this.likes);
+    console.log("WANT MORE: " + this.likes);    // this is always in context
   }
 });
 
-var captain = new Pirate("Jack"),
+var captain = new Pirate("Jack"),               // create an instance
   rounds = 20;
 
-captain.on("drunk", captain.yell);
+captain.on("drunk", captain.yell);              // add event listener
 
-function neverbeingcalled(){
+function neverbeingcalled(){                    // pseudo listener
   console.error("AAR!");
 }
 
-captain.on("drunk", neverbeingcalled);
-captain.off("drunk", neverbeingcalled);
+captain.on("drunk", neverbeingcalled);          // add event listener
+captain.off("drunk", neverbeingcalled);         // remove event listener
 
 while (rounds--){ 
   captain
-    .drink()
-    .drink()
-    .drink()
-    .drink()
-    .drink(); 
+    .drink()                                    // chaining FTW!
+    .drink()                                    // chaining FTW!
+    .drink()                                    // chaining FTW!
+    .drink()                                    // chaining FTW!
+    .drink();                                   // chaining FTW!
 }
 ```
 
