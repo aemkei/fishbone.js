@@ -69,12 +69,12 @@ while (rounds--){
 Copy and paste this:
 
 ```js
-function Model(a){return function(b){var c=this,d={},e,f,g,h,i,j;c.on=function(
-a,b){g=d[a]||(d[a]=[]),g.push(b)},c.trigger=function(a,b){for(g=d[a],i=0;g&&i<g
-.length;i++)g[i](b)},c.off=function(a,b){for(g=d[a]||[];b&&(i=g.indexOf(b))>-1;
-)g.splice(i,1);d[a]=g};for(e in a)f=a[e],a.hasOwnProperty(e)&&(c[e]=typeof f==
-"function"?function(){return h=this.apply(c,arguments),h===j?c:h}.bind(f):c[e]
-=f);c.init(b)}}typeof module=="object"&&(module.exports=Model);
+function Model(a){return function(b){var c=this,d={},e,f,g,h,i,j;c.on=function
+(a,b){g=d[a]||(d[a]=[]),g.push(b)},c.trigger=function(a,b){for(g=d[a],i=0;g&&i
+<g.length;i++)g[i](b)},c.off=function(a,b){for(g=d[a]||[];b&&(i=g.indexOf(b))>
+-1;)g.splice(i,1);d[a]=g};for(e in a)f=a[e],a.hasOwnProperty(e)&&(c[e]=typeof 
+f=="function"?function(){return h=this.apply(c,arguments),h===j?c:h}.bind(f):f
+);c.init(b)}}typeof module=="object"&&(module.exports=Model);
 ```
 
 Install via [npm](https://npmjs.org/package/fishbone):
