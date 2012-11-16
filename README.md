@@ -1,4 +1,4 @@
-# Fishbone.js `c-{{{-<`
+# Fishbone.js c-{{{-<`
 
 A super lightweight (½kb) JavaScript library - made for hungy pirates.
 
@@ -61,10 +61,6 @@ indexOf(b))>-1;)c.splice(e,1);d[a]=c};for(f in a)e=a[f],a.hasOwnProperty(f)&&
 typeof e=="function"&&(c[f]=function(){var a=this.apply(c,arguments);return a
 ===g?c:a}.bind(e));c.init(b)}}typeof module=="object"&&(module.exports=Model);
 ```
-
-### Todo
-
-Add simple chaining by comparing return values with `undefined`.
 
 
 ### About
