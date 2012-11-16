@@ -1,6 +1,6 @@
 # Fishbone.js `c-{{{-<`
 
-A super lightweight (½kb) JavaScript library - made for hungy pirates.
+A super lightweight (½kb) JavaScript library – made for hungy pirates.
 
 ### Features
 
@@ -8,7 +8,8 @@ A super lightweight (½kb) JavaScript library - made for hungy pirates.
 * scoped instance methods
 * event observer pattern
 * automatic method chaining
-* for browser & Node.js
+* no dependencies
+* cross browser & [Node.js](http://nodejs.org) support
 * < 512 bytes minified (300 gzip)
 
 ### Usage
