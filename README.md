@@ -1,4 +1,4 @@
-# Fishbone.js 'c-{{{-<'
+# Fishbone.js `c-{{{-<`
 
 A super lightweight (½kb) JavaScript library - made for hungy pirates.
 
