@@ -1,15 +1,15 @@
-# Fishbone.js
+# Fishbone.js 'c-{{{-<'
 
-A super lightweight JavaScript library - made for hungy pirates.
+A super lightweight (½kb) JavaScript library - made for hungy pirates.
 
 ### Features
 
-* simple constructor
+* clean and simple constructor
+* scoped instance methods
 * event observer pattern
-* scoped methods
+* automatic method chaining
 * for browser & Node.js
-* no bullshit
-* only 400 bytes minified
+* < 512 bytes minified (300 gzip)
 
 ### Usage
 
@@ -22,13 +22,15 @@ A super lightweight JavaScript library - made for hungy pirates.
 ### Example
 
 ```js
+var Model = require("./fishbone");
+
 var Pirate = Model({
   init: function(name){
     this.name = name;
     this.grogs = 0;
   },
   drink: function(){
-    if (++this.grogs > 100){
+    if (++this.grogs >= 100){
       this.trigger("drunk");
     }
   },
@@ -38,11 +40,13 @@ var Pirate = Model({
 });
 
 var captain = new Pirate("Jack"),
-  grogCount = 110;
+  rounds = 20;
 
 captain.on("drunk", captain.sing);
 
-while (grogCount--){ captain.drink(); }
+while (rounds--){ 
+  captain.drink().drink().drink().drink().drink(); 
+}
 ```
 
 ### Install
@@ -50,12 +54,12 @@ while (grogCount--){ captain.drink(); }
 Copy and paste this:
 
 ```js
-function Model(a){return function(b){var c=this,d={},e,f;c.on=function(a,b){
-var c=d[a]||(d[a]=[]);c.push(b)},c.trigger=function(a,b){for(var c=d[a],e=0;
+function Model(a){return function(b){var c=this,d={},e,f,g;c.on=function(a,b)
+{var c=d[a]||(d[a]=[]);c.push(b)},c.trigger=function(a,b){for(var c=d[a],e=0;
 c&&e<c.length;e++)c[e](b)},c.off=function(a,b){for(var c=d[a]||[],e;b&&(e=c.
-indexOf(b))>-1;)c.splice(e,1);d[a]=c};for(f in a)e=a[f],a.hasOwnProperty(f)
-&&typeof e=="function"&&(c[f]=e.bind(c));c.init(b)}}typeof module=="object"
-&&(module.exports=Model);
+indexOf(b))>-1;)c.splice(e,1);d[a]=c};for(f in a)e=a[f],a.hasOwnProperty(f)&&
+typeof e=="function"&&(c[f]=function(){var a=this.apply(c,arguments);return a
+===g?c:a}.bind(e));c.init(b)}}typeof module=="object"&&(module.exports=Model);
 ```
 
 ### Todo
