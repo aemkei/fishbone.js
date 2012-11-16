@@ -1,7 +1,10 @@
 function Model(object){
   return function(options){
     
-    var target = this, observers = {}, method, property;
+    var target = this,
+      observers = {},
+      method, property,
+      undefined;
   
     target.on = function(event, listener){
       var listeners = observers[event] || (observers[event] = []);
@@ -32,7 +35,10 @@ function Model(object){
     for (property in object) {
       method = object[property];
       if (object.hasOwnProperty(property) && typeof method == 'function') {
-        target[property] = method.bind(target);
+        target[property] = function(){
+          var value = this.apply(target, arguments);
+          return value === undefined ? target : value;
+        }.bind(method);
       }
     }
 
