@@ -1,7 +1,7 @@
 
 // Fishbone.js
 //
-// Version: 0.9.3
+// Version: 0.9.4
 // URL: https://github.com/aemkei/fishbone.js
 // Author: Martin Kleppe <kleppe@ubilabs.net>
 // License: WTFPL
@@ -75,7 +75,7 @@ function Model(object){
           }.bind(property) :
         
           // copy property
-          target[key] = property;
+          property;
       }
     }
 
