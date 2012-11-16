@@ -3,7 +3,7 @@ function Model(object){
     
     var target = this,
       observers = {},
-      method, property,
+      key, property,
       undefined;
   
     target.on = function(event, listener){
@@ -32,13 +32,18 @@ function Model(object){
       observers[event] = listeners;
     };
 
-    for (property in object) {
-      method = object[property];
-      if (object.hasOwnProperty(property) && typeof method == 'function') {
-        target[property] = function(){
-          var value = this.apply(target, arguments);
-          return value === undefined ? target : value;
-        }.bind(method);
+    for (key in object) {
+      property = object[key];
+      if (object.hasOwnProperty(key)) {
+
+        target[key] = (typeof property == 'function') ?
+
+          function(){
+            var value = this.apply(target, arguments);
+            return value === undefined ? target : value;
+          }.bind(property) :
+        
+          target[key] = property;
       }
     }
 
@@ -46,6 +51,6 @@ function Model(object){
   };
 };
 
-if (typeof module == "object"){
+if (typeof module == 'object'){
   module.exports = Model;
 }

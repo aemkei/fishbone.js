@@ -1,6 +1,9 @@
 var Model = require("./fishbone");
 
 var Pirate = Model({
+
+  likes: "GROG",
+
   init: function(name){
     this.name = name;
     this.grogs = 0;
@@ -10,15 +13,22 @@ var Pirate = Model({
       this.trigger("drunk");
     }
   },
-  sing: function(){
-    console.log("ARR: " + this.name + " WANT MORE!");
+  yell: function(){
+    console.log(this. name + " WANT MORE: " + this.likes);
   }
 });
 
 var captain = new Pirate("Jack"),
   rounds = 20;
 
-captain.on("drunk", captain.sing);
+captain.on("drunk", captain.yell);
+
+function neverbeingcalled(){
+  console.error("AAR!");
+}
+
+captain.on("drunk", neverbeingcalled);
+captain.off("drunk", neverbeingcalled);
 
 while (rounds--){ 
   captain

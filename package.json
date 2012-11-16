@@ -1,6 +1,6 @@
 {
   "name": "fishbone",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A super lightweight (½kb) JavaScript library - made for hungy pirates.",
   "main": "fishbone.js",
   "repository": {

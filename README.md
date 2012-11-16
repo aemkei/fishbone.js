@@ -26,6 +26,9 @@ A super lightweight (½kb) JavaScript library – made for hungy pirates.
 var Model = require("./fishbone");
 
 var Pirate = Model({
+
+  likes: "GROG",
+
   init: function(name){
     this.name = name;
     this.grogs = 0;
@@ -35,18 +38,30 @@ var Pirate = Model({
       this.trigger("drunk");
     }
   },
-  sing: function(){
-    console.log("ARR: " + this.name + " WANT MORE!");
+  yell: function(){
+    console.log(this. name + " WANT MORE: " + this.likes);
   }
 });
 
 var captain = new Pirate("Jack"),
   rounds = 20;
 
-captain.on("drunk", captain.sing);
+captain.on("drunk", captain.yell);
+
+function neverbeingcalled(){
+  console.error("AAR!");
+}
+
+captain.on("drunk", neverbeingcalled);
+captain.off("drunk", neverbeingcalled);
 
 while (rounds--){ 
-  captain.drink().drink().drink().drink().drink(); 
+  captain
+    .drink()
+    .drink()
+    .drink()
+    .drink()
+    .drink(); 
 }
 ```
 
@@ -55,12 +70,13 @@ while (rounds--){
 Copy and paste this:
 
 ```js
-function Model(a){return function(b){var c=this,d={},e,f,g;c.on=function(a,b)
-{var c=d[a]||(d[a]=[]);c.push(b)},c.trigger=function(a,b){for(var c=d[a],e=0;
-c&&e<c.length;e++)c[e](b)},c.off=function(a,b){for(var c=d[a]||[],e;b&&(e=c.
-indexOf(b))>-1;)c.splice(e,1);d[a]=c};for(f in a)e=a[f],a.hasOwnProperty(f)&&
-typeof e=="function"&&(c[f]=function(){var a=this.apply(c,arguments);return a
-===g?c:a}.bind(e));c.init(b)}}typeof module=="object"&&(module.exports=Model);
+function Model(a){return function(b){var c=this,d={},e,f,g;c.on=function
+(a,b){var c=d[a]||(d[a]=[]);c.push(b)},c.trigger=function(a,b){for(var c
+=d[a],e=0;c&&e<c.length;e++)c[e](b)},c.off=function(a,b){for(var c=d[a]
+||[],e;b&&(e=c.indexOf(b))>-1;)c.splice(e,1);d[a]=c};for(e in a)f=a[e],a.
+hasOwnProperty(e)&&(c[e]=typeof f=="function"?function(){var a=this.apply
+(c,arguments);return a===g?c:a}.bind(f):c[e]=f);c.init(b)}}typeof module
+=="object"&&(module.exports=Model);
 ```
 
 Install via npm:
