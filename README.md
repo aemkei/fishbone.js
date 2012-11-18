@@ -10,6 +10,8 @@ A super lightweight (½kb) JavaScript library – made for hungy pirates.
 * automatic method chaining
 * `on`, `off` event observer pattern
 * no dependencies
+* production ready
+* well tested
 * cross browser & [Node.js](http://nodejs.org) support
 * < 512 bytes minified (300 gzip)
 
@@ -72,9 +74,9 @@ Copy and paste this:
 function Model(a){return function(b){var c=this,d={},e,f,g,h,i,j;c.on=function
 (a,b){g=d[a]||(d[a]=[]),g.push(b)},c.trigger=function(a,b){for(g=d[a],i=0;g&&i
 <g.length;i++)g[i](b)},c.off=function(a,b){for(g=d[a]||[];b&&(i=g.indexOf(b))>
--1;)g.splice(i,1);d[a]=g};for(e in a)f=a[e],a.hasOwnProperty(e)&&(c[e]=typeof 
-f=="function"?function(){return h=this.apply(c,arguments),h===j?c:h}.bind(f):f
-);c.init(b)}}typeof module=="object"&&(module.exports=Model);
+-1;)g.splice(i,1);d[a]=b?g:[]};for(e in a)f=a[e],a.hasOwnProperty(e)&&(c[e]=
+typeof f=="function"?function(){return h=this.apply(c,arguments),h===j?c:h}.
+bind(f):f);c.init&&c.init(b)}}typeof module=="object"&&(module.exports=Model);
 ```
 
 Install via [npm](https://npmjs.org/package/fishbone):
