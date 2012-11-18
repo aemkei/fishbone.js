@@ -79,7 +79,7 @@ function Model(object){
       }
     }
 
-    target.init(options);
+    target.init && target.init(options);
   };
 };
 
