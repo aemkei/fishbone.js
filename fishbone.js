@@ -53,7 +53,7 @@ function Model(object){
       }
 
       // assign the new list
-      observers[event] = listeners;
+      observers[event] = listener ? listeners : [];
     };
 
     // cycle through all properties
