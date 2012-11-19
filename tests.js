@@ -3,33 +3,33 @@ var Model = require("./fishbone");
 var tests = {
   "Class based instance property.": function(){
     var Klass = new Model({
-      foo: "bar"
+      foo: "foo"
     });
 
     var instance = new Klass();
-    return instance.foo = "bar";
+    return instance.foo == "foo";
   },
 
   "Instance property on init.": function(){
     var Klass = new Model({ 
       init: function(){
-        this.foo = "bar";
+        this.foo = "foo";
       }
     });
 
     var instance = new Klass();
-    return instance.foo = "bar";
+    return instance.foo == "foo";
   },
 
   "Instance property via options.": function(){
     var Klass = new Model({ 
-      init: function(options){
-        this.foo = options;
+      init: function(foo){
+        this.foo = foo;
       }
     });
 
-    var instance = new Klass("bar");
-    return instance.foo = "bar";
+    var instance = new Klass("foo");
+    return instance.foo == "foo";
   },
 
   "Instance property via method.": function(){
@@ -39,9 +39,9 @@ var tests = {
       }
     });
 
-    var instance = new Klass("bar");
-    instance.setFoo("bar");
-    return instance.foo = "bar";
+    var instance = new Klass();
+    instance.setFoo("foo");
+    return instance.foo == "foo";
   },
 
   "Automatic method chaining.": function(){
@@ -50,7 +50,7 @@ var tests = {
       bar: function(){ }
     });
 
-    var instance = new Klass("bar");
+    var instance = new Klass();
     
     return instance.foo().foo().bar().bar() == instance;
   },
@@ -58,12 +58,12 @@ var tests = {
   "No chaining for methods with return values.": function(){
     var Klass = new Model({ 
       foo: function(){ },
-      bar: function(){ return "bar"; }
+      bar: function(){ return "foo"; }
     });
 
-    var instance = new Klass("bar");
+    var instance = new Klass();
     
-    return instance.foo().foo().bar() == "bar";
+    return instance.foo().foo().bar() == "foo";
   },
 
   "Add event handler.": function(){
@@ -74,7 +74,7 @@ var tests = {
     });
 
     var called = false;
-    var instance = new Klass("bar");
+    var instance = new Klass();
 
     instance.on("event", function(data){
       called = data;
@@ -93,7 +93,7 @@ var tests = {
     });
 
     var called = false;
-    var instance = new Klass("bar");
+    var instance = new Klass();
 
     var callback = function(){
       called = true;
@@ -115,7 +115,7 @@ var tests = {
     });
 
     var called = false;
-    var instance = new Klass("bar");
+    var instance = new Klass();
 
     var callback = function(){
       called = true;
