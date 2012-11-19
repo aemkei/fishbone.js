@@ -1,7 +1,7 @@
 
 // Fishbone.js
 //
-// Version: 0.9.5
+// Version: 0.9.6
 // URL: https://github.com/aemkei/fishbone.js
 // Author: Martin Kleppe <kleppe@ubilabs.net>
 // License: WTFPL
@@ -9,7 +9,7 @@
 function Model(object){
 
   // return a constructor
-  return function(options){
+  return function(){
     
     // references used across instances
     var target = this,
@@ -79,7 +79,7 @@ function Model(object){
       }
     }
 
-    target.init && target.init(options);
+    target.init && target.init.apply(target, arguments);
   };
 };
 

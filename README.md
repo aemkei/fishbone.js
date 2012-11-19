@@ -2,6 +2,8 @@
 
 A super lightweight (½kb) JavaScript library – made for hungy pirates.
 
+Version: 0.9.6
+
 ### Features
 
 * clean and simple syntax
@@ -71,12 +73,13 @@ while (rounds--){
 Copy and paste this:
 
 ```js
-function Model(a){return function(b){var c=this,d={},e,f,g,h,i,j;c.on=function
-(a,b){g=d[a]||(d[a]=[]),g.push(b)},c.trigger=function(a,b){for(g=d[a],i=0;g&&i
-<g.length;i++)g[i](b)},c.off=function(a,b){for(g=d[a]||[];b&&(i=g.indexOf(b))>
--1;)g.splice(i,1);d[a]=b?g:[]};for(e in a)f=a[e],a.hasOwnProperty(e)&&(c[e]=
-typeof f=="function"?function(){return h=this.apply(c,arguments),h===j?c:h}.
-bind(f):f);c.init&&c.init(b)}}typeof module=="object"&&(module.exports=Model);
+function Model(a){return function(){var b=this,c={},d,e,f,g,h,i;b.on
+=function(a,b){f=c[a]||(c[a]=[]),f.push(b)},b.trigger=function(a,b){
+for(f=c[a],h=0;f&&h<f.length;h++)f[h](b)},b.off=function(a,b){for(f=
+c[a]||[];b&&(h=f.indexOf(b))>-1;)f.splice(h,1);c[a]=b?f:[]};for(d in
+a)e=a[d],a.hasOwnProperty(d)&&(b[d]=typeof e=="function"?function(){
+return g=this.apply(b,arguments),g===i?b:g}.bind(e):e);b.init&&b.init
+.apply(b,arguments)}}typeof module=="object"&&(module.exports=Model);
 ```
 
 Install via [npm](https://npmjs.org/package/fishbone):
