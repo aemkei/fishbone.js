@@ -9,7 +9,7 @@
 function Model(object){
 
   // return a constructor
-  return function(){
+  function C(){
     
     // references used across instances
     var target = this,
@@ -80,10 +80,26 @@ function Model(object){
     }
 
     target.init && target.init.apply(target, arguments);
-  };
-};
+  }
 
-// make module Node.js compatible 
+  C.extend = function(properties){
+    var merge = {}, all;
+
+    for (all in object){
+      merge[all] = object[all];
+    }
+
+    for (all in properties){
+      merge[all] = properties[all];
+    }
+
+    return Model(merge);
+  };
+
+  return C;
+}
+
+// make module Node.js compatible
 if (typeof module == 'object'){
   module.exports = Model;
 }
