@@ -74,7 +74,7 @@ while (rounds--){
 
 ### Install
 
-Include `fishone.js` or copy and paste this:
+Include `fishbone.js` or copy and paste this:
 
 ```js
 Model=(eval("module")||{}).exports=function _(a,b,c,d){function e(){var e=this,
