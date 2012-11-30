@@ -140,6 +140,68 @@ var tests = {
     instance.triggerEvent();
     
     return !called;
+  },
+
+  "Simple inheritance.": function(){
+
+    var Klass1 = Model({
+      foo: "foo"
+    });
+
+    var Klass2 = Klass1.extend({
+      bar: "bar"
+    });
+
+    var instance = new Klass2();
+
+    return instance.foo == "foo" && instance.bar == "bar";
+
+  },
+
+  "Override property.": function(){
+
+    var Klass1 = Model({
+      foo: "bar"
+    });
+
+    var Klass2 = Klass1.extend({
+      foo: "foo"
+    });
+
+    var instance = new Klass2();
+
+    return instance.foo == "foo";
+
+  },
+
+  "Override method.": function(){
+
+    var Klass1 = Model({
+      foo: "foo",
+      bar: function(){
+        return false;
+      }
+    });
+
+    var Klass2 = Klass1.extend({
+      bar: function(){
+        return this.foo;
+      }
+    });
+
+    var instance = new Klass2();
+
+    return instance.bar() == "foo";
+  },
+
+  "Multiple inheritance": function(){
+    var Klass1 = Model({ a: "a" });
+    var Klass2 = Klass1.extend({ b: "b" });
+    var Klass3 = Klass2.extend({ c: "c" });
+
+    var instance = new Klass3();
+
+    return instance.a == "a" && instance.b == "b" && instance.c == "c";
   }
 };
 
