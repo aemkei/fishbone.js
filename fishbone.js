@@ -1,15 +1,20 @@
 
 // Fishbone.js
 //
-// Version: 0.9.6
+// Version: 0.9.7
 // URL: https://github.com/aemkei/fishbone.js
 // Author: Martin Kleppe <kleppe@ubilabs.net>
 // License: WTFPL
 
-function Model(object){
+Model =
 
-  // return a constructor
-  function C(){
+// make module Node.js compatible
+(eval("module") || {}).exports =
+
+function _(object){
+
+  // return class constructor
+  function Klass(){
     
     // references used across instances
     var target = this,
@@ -20,7 +25,7 @@ function Model(object){
       index,
       undefined;
   
-    // add an event listner
+    // add an event listener
     target.on = function(event, listener){
       // push listerner to list of observers
       listeners = observers[event] || (observers[event] = []);
@@ -33,10 +38,9 @@ function Model(object){
         // cycle through all listerners for a given event
         listeners = observers[event], index = 0;
         listeners && index < listeners.length;
-        index++
       ){
         // call listener and pass data
-        listeners[index](data);
+        listeners[index++](data);
       }
     };
 
@@ -59,47 +63,42 @@ function Model(object){
     // cycle through all properties
     for (key in object) {
       property = object[key];
-
-      // only handle object's own properties
-      if (object.hasOwnProperty(key)) {
         
-        // test if property is a function
-        target[key] = (typeof property == 'function') ?
+      // test if property is a function
+      target[key] = (typeof property == 'function') ?
 
-          // wrap method
-          function(){
-            // keep the original context
-            value = this.apply(target, arguments);
-            // add chainablity if nothing was returned
-            return value === undefined ? target : value;
-          }.bind(property) :
-        
-          // copy property
-          property;
-      }
+        // wrap method
+        function(){
+          // keep the original context
+          value = this.apply(target, arguments);
+          // add chainablity if nothing was returned
+          return value === undefined ? target : value;
+        }.bind(property) :
+      
+        // copy property
+        property;
     }
 
     target.init && target.init.apply(target, arguments);
   }
 
-  C.extend = function(properties){
-    var merge = {}, all;
+  // allow class to be extended
+  Klass.extend = function(overrides, merge, key){
+    
+    merge = {};
 
-    for (all in object){
-      merge[all] = object[all];
+    // copy all object properties
+    for (key in object){
+      merge[key] = object[key];
     }
 
-    for (all in properties){
-      merge[all] = properties[all];
+    // override object properties
+    for (key in overrides){
+      merge[key] = overrides[key];
     }
 
-    return Model(merge);
+    return _(merge);
   };
 
-  return C;
-}
-
-// make module Node.js compatible
-if (typeof module == 'object'){
-  module.exports = Model;
-}
+  return Klass;
+};
