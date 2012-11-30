@@ -46,7 +46,11 @@ var Pirate = Model({                            // simple class creator
   }
 });
 
-var captain = new Pirate("Jack"),               // create an instance
+var Captain = Pirate.extend({                   // simple inheritance
+  likes: "STRONG GROG"
+});
+
+var captain = new Captain("Jack"),              // create an instance
   rounds = 20;
 
 captain.on("drunk", captain.yell);              // add event listener
