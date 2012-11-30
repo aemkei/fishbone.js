@@ -1,7 +1,7 @@
 {
   "name": "fishbone",
-  "version": "0.9.6",
-  "description": "A super lightweight (½kb) JavaScript library - made for hungy pirates.",
+  "version": "0.9.9",
+  "description": "A super lightweight (½kb) JavaScript library with automatic method chaining, automatic context binding, event support and simple inheritance.",
   "main": "fishbone.js",
   "repository": {
     "type": "git",
