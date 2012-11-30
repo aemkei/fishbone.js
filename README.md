@@ -10,6 +10,7 @@ Version: 0.9.9
 * steep learning curve
 * `this` is the context in all methods
 * automatic method chaining
+* simple inheritance
 * `on`, `off` event observer pattern
 * no dependencies
 * production ready
@@ -19,11 +20,12 @@ Version: 0.9.9
 
 ### Usage
 
-* `Model({ init: function(options){} })` - create a model
-* `new Model(options)` - create an instance
-* `#on(event, listener)` - observe a given event
-* `#off(event, [listener])` - remove listener
-* `#trigger(event, data)` - triggers an event
+* `Klass = Model({ init: function(options){} })` - create a model
+* `Klass2 = Klass.extend({ … })` - inherit from other class
+* `instance = new Klass(options)` - create an instance
+* `instance.on(event, listener)` - observe a given event
+* `instance.off(event, [listener])` - remove listener
+* `instance.trigger(event, data)` - triggers an event
 
 ### Example
 
