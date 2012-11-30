@@ -11,36 +11,35 @@ Model =
 // make module Node.js compatible
 (eval("module") || {}).exports =
 
-function _(object){
+function _(
+  object, // module definition
+  key, value, // placeholder
+  undefined 
+){
 
   // return class constructor
   function Klass(){
     
-    // references used across instances
+    // references used across instance
     var target = this,
-      observers = {},
-      key, property,
-      listeners,
-      value,
-      index,
-      undefined;
+      observers = {};
   
     // add an event listener
     target.on = function(event, listener){
       // push listerner to list of observers
-      listeners = observers[event] || (observers[event] = []);
-      listeners.push(listener);
+      value = observers[event] || (observers[event] = []);
+      value.push(listener);
     };
     
     // trigger a given event
     target.trigger = function(event, data){
       for (
         // cycle through all listerners for a given event
-        listeners = observers[event], index = 0;
-        listeners && index < listeners.length;
+        value = observers[event], key = 0;
+        value && key < value.length;
       ){
         // call listener and pass data
-        listeners[index++](data);
+        value[key++](data);
       }
     };
 
@@ -48,24 +47,24 @@ function _(object){
     target.off = function (event, listener) {
       for (
         // get index of the given listener
-        listeners = observers[event] || [];
+        value = observers[event] || [];
         // find all occurrences
-        listener && (index = listeners.indexOf(listener)) > -1;
+        listener && (key = value.indexOf(listener)) > -1;
       ){
         // remove the listener
-        listeners.splice(index, 1);
+        value.splice(key, 1);
       }
 
       // assign the new list
-      observers[event] = listener ? listeners : [];
+      observers[event] = listener ? value : [];
     };
 
     // cycle through all properties
     for (key in object) {
-      property = object[key];
+      value = object[key];
         
-      // test if property is a function
-      target[key] = (typeof property == 'function') ?
+      // test if value is a function
+      target[key] = (typeof value == 'function') ?
 
         // wrap method
         function(){
@@ -73,31 +72,31 @@ function _(object){
           value = this.apply(target, arguments);
           // add chainablity if nothing was returned
           return value === undefined ? target : value;
-        }.bind(property) :
+        }.bind(value) :
       
         // copy property
-        property;
+        value;
     }
 
     target.init && target.init.apply(target, arguments);
   }
 
   // allow class to be extended
-  Klass.extend = function(overrides, merge, key){
+  Klass.extend = function(overrides){
     
-    merge = {};
+    value = {};
 
     // copy all object properties
     for (key in object){
-      merge[key] = object[key];
+      value[key] = object[key];
     }
 
     // override object properties
     for (key in overrides){
-      merge[key] = overrides[key];
+      value[key] = overrides[key];
     }
 
-    return _(merge);
+    return _(value);
   };
 
   return Klass;
