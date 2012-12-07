@@ -226,6 +226,25 @@ var tests = {
     var instance = new Klass3();
 
     return instance.a == "a" && instance.b == "b" && instance.c == "c";
+  },
+
+  "Super prperties": function(){
+    var Klass1 = Model({
+      bar: "bar",
+      foo: function(){
+        return this.bar;
+      }
+    });
+
+    var Klass2 = Klass1.extend({
+      foo: function(){
+        return "foo" + this.__foo();
+      }
+    });
+
+    var instance = new Klass2();
+
+    return instance.foo() == "foobar";
   }
 };
 

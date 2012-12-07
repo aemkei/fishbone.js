@@ -95,6 +95,7 @@ function _(
     // override object properties
     for (key in overrides){
       value[key] = overrides[key];
+      (value["__" + key] = object[key]);
     }
 
     return _(value);
