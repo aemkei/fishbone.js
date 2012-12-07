@@ -35,11 +35,11 @@ function _(
     target.trigger = function(event, data){
       for (
         // cycle through all listerners for a given event
-        value = observers[event], key = 0;
-        value && key < value.length;
+        object = observers[event], key = 0;
+        object && key < object.length;
       ){
         // call listener and pass data
-        value[key++](data);
+        object[key++](data);
       }
     };
 
