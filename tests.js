@@ -228,7 +228,7 @@ var tests = {
     return instance.a == "a" && instance.b == "b" && instance.c == "c";
   },
 
-  "Super prperties": function(){
+  "Super methods": function(){
     var Klass1 = Model({
       bar: "bar",
       foo: function(){
@@ -245,6 +245,44 @@ var tests = {
     var instance = new Klass2();
 
     return instance.foo() == "foobar";
+  },
+
+  "Super properties": function(){
+    var Klass1 = Model({
+      bar: "bar",
+      foo: function(){
+        return this.bar;
+      }
+    });
+
+    var Klass2 = Klass1.extend({
+      bar: "foo",
+      foo: function(){
+        return this.bar + this.__bar;
+      }
+    });
+
+    var instance = new Klass2();
+
+    return instance.foo() == "foobar";
+  },
+
+  "Second level super properties": function(){
+    var Klass1 = Model({
+      bar: "bar"
+    });
+
+    var Klass2 = Klass1.extend();
+
+    var Klass3 = Klass2.extend({
+      bar: function(){
+        return this.__bar;
+      }
+    });
+
+    var instance = new Klass3();
+
+    return instance.bar() == "bar";
   }
 };
 
