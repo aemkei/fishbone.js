@@ -2,7 +2,7 @@ var Model = require("./fishbone");
 
 var tests = {
   "Class based instance property.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       foo: "foo"
     });
 
@@ -11,7 +11,7 @@ var tests = {
   },
 
   "Instance property on init.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       init: function(){
         this.foo = "foo";
       }
@@ -22,7 +22,7 @@ var tests = {
   },
 
   "Instance property via options.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       init: function(foo){
         this.foo = foo;
       }
@@ -33,7 +33,7 @@ var tests = {
   },
 
   "Multiple arguments in constructor.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       init: function(foo, bar){
         this.foo = foo;
         this.bar = bar;
@@ -45,7 +45,7 @@ var tests = {
   },
 
   "Instance property via method.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       setFoo: function(foo){
         this.foo = foo;
       }
@@ -57,7 +57,7 @@ var tests = {
   },
 
   "Automatic method chaining.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       foo: function(){ },
       bar: function(){ }
     });
@@ -68,7 +68,7 @@ var tests = {
   },
 
   "No chaining for methods with return values.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       foo: function(){ },
       bar: function(){ return "foo"; }
     });
@@ -79,11 +79,12 @@ var tests = {
   },
 
   "Add event handler.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       triggerEvent: function(){
         this.trigger("event", "foo");
       }
     });
+
 
     var called = false;
     var instance = new Klass();
@@ -98,7 +99,7 @@ var tests = {
   },
 
   "Remove single event handler.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       triggerEvent: function(){
         this.trigger("event");
       }
@@ -120,7 +121,7 @@ var tests = {
   },
 
   "Remove all handlers for a single event type.": function(){
-    var Klass = new Model({
+    var Klass = Model({
       triggerEvent: function(){
         this.trigger("event");
       }
