@@ -27,8 +27,8 @@ function _(
     // add an event listener
     target.on = function(event, listener){
       // push listerner to list of observers
-      value = observers[event] || (observers[event] = []);
-      value.push(listener);
+      (observers[event] || (observers[event] = []))
+        .push(listener);
     };
     
     // trigger a given event
@@ -67,11 +67,12 @@ function _(
       target[key] = (typeof value == 'function') ?
 
         // wrap method
-        function(value){
-          // keep the original context
-          value = this.apply(target, arguments);
+        function(){
           // add chainablity if nothing was returned
-          return value === undefined ? target : value;
+          return (
+            // keep the original context
+            value = this.apply(target, arguments)
+          ) === undefined ? target : value;
         }.bind(value) :
       
         // copy property
