@@ -98,6 +98,29 @@ var tests = {
     return called == "foo";
   },
 
+  "Multiple event handlers.": function(){
+
+    var first = false;
+    var second = false;
+
+    var Klass = Model({
+      first: function(data){
+        first = data;
+      }
+    });
+
+    var instance = new Klass();
+
+    instance.on("event", instance.first);
+    instance.on("event", function(data){
+      second = data;
+    });
+
+    instance.trigger("event", true);
+    
+    return first && second;
+  },
+
   "Remove single event handler.": function(){
     var Klass = Model({
       triggerEvent: function(){
