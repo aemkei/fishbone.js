@@ -14,7 +14,7 @@ Model =
 function _(
   object, // module definition
   key, value, // placeholder
-  undefined 
+  undefined
 ){
 
   // return class constructor
@@ -67,7 +67,7 @@ function _(
       target[key] = (typeof value == 'function') ?
 
         // wrap method
-        function(){
+        function(value){
           // keep the original context
           value = this.apply(target, arguments);
           // add chainablity if nothing was returned
