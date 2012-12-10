@@ -1,7 +1,7 @@
 
 // Fishbone.js
 //
-// Version: 0.9.92
+// Version: 1.0.0
 // URL: https://github.com/aemkei/fishbone.js
 // Author: Martin Kleppe <kleppe@ubilabs.net>
 // License: WTFPL

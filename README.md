@@ -2,7 +2,7 @@
 
 A super lightweight (½kb) JavaScript library with automatic method chaining, automatic context binding, event support and simple inheritance.
 
-Version: 0.9.9
+Version: 1.0.0
 
 ### Features
 
@@ -79,13 +79,14 @@ while (rounds--){
 Include `fishbone.js` or copy and paste this:
 
 ```js
-Model=(eval("module")||{}).exports=function _(a,b,c,d){function e(){var e=this,
-f={};e.on=function(a,b){c=f[a]||(f[a]=[]),c.push(b)},e.trigger=function(a,d){
-for(c=f[a],b=0;c&&b<c.length;)c[b++](d)},e.off=function(a,d){for(c=f[a]||[];d&&
-(b=c.indexOf(d))>-1;)c.splice(b,1);f[a]=d?c:[]};for(b in a)c=a[b],e[b]=typeof 
-c=="function"?function(){return c=this.apply(e,arguments),c===d?e:c}.bind(c):c;
-e.init&&e.init.apply(e,arguments)}return e.extend=function(d){c={};for(b in a)
-c[b]=a[b];for(b in d)c[b]=d[b];return _(c)},e};                     // c-{{{-<
+Model=function a(b,c,d,e){function f(){var a=this,f={};a.on=function(a,b){(f[a]
+||(f[a]=[])).push(b)},a.trigger=function(a,b,d){for(d=f[a],c=0;d&&c<d.length;)d
+[c++](b)},a.off=function(a,b){for(d=f[a]||[];b&&(c=d.indexOf(b))>-1;)d.splice(c
+,1);f[a]=b?d:[]};for(c in b)d=b[c],a[c]=typeof d=="function"?function(){return(
+d=this.apply(a,arguments))===e?a:d}.bind(d):d;a.init&&a.init.apply(a,arguments)
+}return f.extend=function(f){d={};for(c in b)d[c]=b[c];for(c in f)d[c]=f[c],b[c
+]!==e&&(d["__"+c]=b[c]);return a(d)},f},typeof module=="object"&&(
+module.exports=Model);                                               // c-{{{-< 
 ```
 
 Install via [npm](https://npmjs.org/package/fishbone):
