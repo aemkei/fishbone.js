@@ -1,15 +1,12 @@
 
 // Fishbone.js
 //
-// Version: 0.9.9
+// Version: 0.9.92
 // URL: https://github.com/aemkei/fishbone.js
 // Author: Martin Kleppe <kleppe@ubilabs.net>
 // License: WTFPL
 
 Model =
-
-// make module Node.js compatible
-(eval("module") || {}).exports =
 
 function _(
   object, // module definition
@@ -107,3 +104,8 @@ function _(
 
   return Klass;
 };
+
+// make module Node.js compatible
+if (typeof module == "object") {
+  module.exports = Model;
+}
