@@ -95,6 +95,12 @@ Install via [npm](https://npmjs.org/package/fishbone):
 npm install fishbone
 ```
 
+### Browser Support
+
+Fishbone runs in all modern browsers and Node.js.
+
+If you want support for Internet Explorer 8 and below, you have to include the 
+`.bind` and `.indexOf` polyfills: [https://github.com/aemkei/fishbone.js/blob/master/polyfills.js](https://github.com/aemkei/fishbone.js/blob/master/polyfills.js)
 
 ### About
 
