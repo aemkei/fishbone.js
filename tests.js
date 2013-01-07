@@ -1,4 +1,8 @@
-var Model = require("./fishbone");
+var isBrowser = typeof window != "undefined";
+
+if (!isBrowser){
+  Model = require("./fishbone");
+}
 
 var tests = {
   "Class based instance property.": function(){
@@ -286,6 +290,10 @@ var tests = {
   }
 };
 
+var log = isBrowser ? function(message){
+  document.write(message + "<br>");
+} : console.log;
+
 for (var description in tests){
-  console.log(tests[description]() ? "OK" : "ERROR", "-", description);
+  log((tests[description]() ? "OK" : "ERROR") + " - " + description);
 }
