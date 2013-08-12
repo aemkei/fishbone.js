@@ -2,7 +2,7 @@
 
 A super lightweight (½kb) JavaScript library with automatic method chaining, automatic context binding, event support and simple inheritance.
 
-Version: 1.0.1
+[![NPM version](https://badge.fury.io/js/fishbone.png)](http://badge.fury.io/js/fishbone)
 
 ### Features
 
