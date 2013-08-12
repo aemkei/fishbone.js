@@ -79,14 +79,15 @@ while (rounds--){
 Include `fishbone.js` or copy and paste this:
 
 ```js
-Model=function a(b,c,d,e){function f(){var a=this,f={};a.on=function(a,b){(f[a]
-||(f[a]=[])).push(b)},a.trigger=function(a,b,d){for(d=f[a],c=0;d&&c<d.length;)d
-[c++](b)},a.off=function(a,b){for(d=f[a]||[];b&&(c=d.indexOf(b))>-1;)d.splice(c
+Model=function a(b,c,d,e){function f(){var a=this,f={};a.on=function(a,b){(f[a]||
+(f[a]=[])).push(b)},a.trigger=function(a,b){for(var c=f[a],d=0;c&&d<c.length;)c
+[d++](b)},a.off=function(a,b){for(d=f[a]||[];b&&(c=d.indexOf(b))>-1;)d.splice(c
 ,1);f[a]=b?d:[]};for(c in b)d=b[c],a[c]=typeof d=="function"?function(){return(
 d=this.apply(a,arguments))===e?a:d}.bind(d):d;a.init&&a.init.apply(a,arguments)
 }return f.extend=function(f){d={};for(c in b)d[c]=b[c];for(c in f)d[c]=f[c],b[c
-]!==e&&(d["__"+c]=b[c]);return a(d)},f},typeof module=="object"&&(
-module.exports=Model);                                               // c-{{{-< 
+]!==e&&(d["__"+c]=b[c]);return a(d)},f},typeof module=="object"&&(module.exports
+=Model);                                                              // c-{{{-<
+
 ```
 
 Install via [npm](https://npmjs.org/package/fishbone):
@@ -95,6 +96,12 @@ Install via [npm](https://npmjs.org/package/fishbone):
 npm install fishbone
 ```
 
+### Browser Support
+
+Fishbone runs in all modern browsers and Node.js.
+
+If you want support for Internet Explorer 8 and below, you have to include the 
+`.bind` and `.indexOf` polyfills: [https://github.com/aemkei/fishbone.js/blob/master/polyfills.js](https://github.com/aemkei/fishbone.js/blob/master/polyfills.js)
 
 ### About
 

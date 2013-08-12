@@ -1,7 +1,7 @@
 
 // Fishbone.js
 //
-// Version: 1.0.0
+// Version: 1.0.1
 // URL: https://github.com/aemkei/fishbone.js
 // Author: Martin Kleppe <kleppe@ubilabs.net>
 // License: WTFPL
@@ -29,10 +29,10 @@ function _(
     };
     
     // trigger a given event
-    target.trigger = function(event, data, value){
+    target.trigger = function(event, data){
       for (
         // cycle through all listerners for a given event
-        value = observers[event], key = 0;
+        var value = observers[event], key = 0;
         value && key < value.length;
       ){
         // call listener and pass data

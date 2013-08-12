@@ -1,6 +1,6 @@
 {
   "name": "fishbone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A super lightweight (½kb) JavaScript library with automatic method chaining, automatic context binding, event support and simple inheritance.",
   "main": "fishbone.js",
   "repository": {
