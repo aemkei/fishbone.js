@@ -49,7 +49,11 @@ var Pirate = Model({                            // simple class creator
 });
 
 var Captain = Pirate.extend({                   // simple inheritance
-  likes: "STRONG GROG"
+  likes: "STRONG GROG",                         // override property
+  yell: function(){                             // override method
+    console.log("Avast, me hearties!");
+    this.__yell();                              // call super method
+  }
 });
 
 var captain = new Captain("Jack"),              // create an instance
