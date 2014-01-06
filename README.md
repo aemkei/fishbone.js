@@ -112,3 +112,6 @@ If you want support for Internet Explorer 8 and below, you have to include the
 Developed by [Martin Kleppe](https://plus.google.com/103747379090421872359) at [Ubilabs](http://www.ubilabs.net).
 
 Released under the [WTFPL](http://en.wikipedia.org/wiki/WTFPL) license.
+
+
+[![Analytics](https://ga-beacon.appspot.com/UA-57649-14/aemkei/fishbone)](https://github.com/igrigorik/ga-beacon)
