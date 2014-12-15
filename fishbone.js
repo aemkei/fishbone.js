@@ -106,6 +106,4 @@ function _(
 };
 
 // make module Node.js compatible
-if (typeof module == "object") {
-  module.exports = Model;
-}
+(module && module.exports = Model);
