@@ -26,6 +26,9 @@ function _(
       // push listerner to list of observers
       (observers[event] || (observers[event] = []))
         .push(listener);
+
+      //return target for chaining
+      return target;
     };
     
     // trigger a given event
@@ -54,6 +57,9 @@ function _(
 
       // assign the new list
       observers[event] = listener ? value : [];
+
+      // return target for chaining
+      return target;
     };
 
     // cycle through all properties
