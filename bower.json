@@ -1,0 +1,22 @@
+{
+  "name": "fishbone.js",
+  "description": "A super lightweight (½kb) JavaScript library with automatic method chaining, automatic context binding, event support and simple inheritance.",
+  "main": "fishbone.min.js",
+  "authors": [
+    "Martin Kleppe <kleppe@ubilabs.net>"
+  ],
+  "license": "WTFPL",
+  "keywords": [
+    "Javascript"
+  ],
+  "homepage": "https://github.com/aemkei/fishbone.js",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
