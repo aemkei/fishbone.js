@@ -102,7 +102,7 @@ npm install fishbone
 Install via bower:
 
 ```sh
-bower install --save https://github.com/aemkei/fishbone.js.git
+bower install --save fishbone
 ```
 
 
