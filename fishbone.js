@@ -16,11 +16,15 @@ function _(
 
   // return class constructor
   function Klass(){
-    
+    //apply this to parent
+    if(object && object.__parent__ !== undefined){
+      object.__parent__.apply(this);
+    }
+
     // references used across instance
     var target = this,
       observers = {};
-  
+
     // add an event listener
     target.on = function(event, listener){
       // push listerner to list of observers
@@ -30,7 +34,7 @@ function _(
       //return target for chaining
       return target;
     };
-    
+
     // trigger a given event
     target.trigger = function(event, data){
       for (
@@ -65,7 +69,7 @@ function _(
     // cycle through all properties
     for (key in object) {
       value = object[key];
-        
+
       // test if value is a function
       target[key] = (typeof value == 'function') ?
 
@@ -77,7 +81,7 @@ function _(
             value = this.apply(target, arguments)
           ) === undefined ? target : value;
         }.bind(value) :
-      
+
         // copy property
         value;
     }
@@ -87,7 +91,7 @@ function _(
 
   // allow class to be extended
   Klass.extend = function(overrides){
-    
+
     value = {};
 
     // copy all object properties
@@ -98,12 +102,17 @@ function _(
     // override object properties
     for (key in overrides){
       value[key] = overrides[key];
-      
+
       // store reference to super properties
       object[key] !== undefined && (
         value["__" + key] = object[key]
       );
     }
+
+    //set parent
+    value.__parent__ = Klass;
+    var child = _(value);
+    child.prototype = Object.create(Klass.prototype);
 
     return _(value);
   };
