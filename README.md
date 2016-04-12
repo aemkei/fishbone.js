@@ -99,6 +99,13 @@ Install via [npm](https://npmjs.org/package/fishbone):
 npm install fishbone
 ```
 
+Intall via bower:
+
+```sh
+bower install --save https://github.com/tanhauhau/fishbone.js.git
+```
+
+
 ### Browser Support
 
 Fishbone runs in all modern browsers and Node.js.
