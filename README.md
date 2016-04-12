@@ -68,7 +68,7 @@ function neverbeingcalled(){                    // pseudo listener
 captain.on("drunk", neverbeingcalled);          // add event listener
 captain.off("drunk", neverbeingcalled);         // remove event listener
 
-while (rounds--){ 
+while (rounds--){
   captain
     .drink()                                    // chaining FTW!
     .drink()                                    // chaining FTW!
@@ -99,10 +99,10 @@ Install via [npm](https://npmjs.org/package/fishbone):
 npm install fishbone
 ```
 
-Intall via bower:
+Install via bower:
 
 ```sh
-bower install --save https://github.com/tanhauhau/fishbone.js.git
+bower install --save https://github.com/aemkei/fishbone.js.git
 ```
 
 
@@ -110,7 +110,7 @@ bower install --save https://github.com/tanhauhau/fishbone.js.git
 
 Fishbone runs in all modern browsers and Node.js.
 
-If you want support for Internet Explorer 8 and below, you have to include the 
+If you want support for Internet Explorer 8 and below, you have to include the
 `.bind` and `.indexOf` polyfills: [https://github.com/aemkei/fishbone.js/blob/master/polyfills.js](https://github.com/aemkei/fishbone.js/blob/master/polyfills.js)
 
 ### About
