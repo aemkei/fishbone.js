@@ -10,20 +10,21 @@ Model =
 
 function _(
   object, // module definition
+  parent, // parent
   key, value, // placeholder
   undefined
 ){
 
   // return class constructor
   function Klass(){
-    //apply this to parent
-    if(object && object.__parent__ !== undefined){
-      object.__parent__.apply(this);
-    }
-
     // references used across instance
     var target = this,
       observers = {};
+
+      //apply this to parent
+      if(parent !== undefined){
+        parent.apply(target);
+      }
 
     // add an event listener
     target.on = function(event, listener){
@@ -110,11 +111,10 @@ function _(
     }
 
     //set parent
-    value.__parent__ = Klass;
-    var child = _(value);
+    var child = _(value, Klass);
     child.prototype = Object.create(Klass.prototype);
 
-    return _(value);
+    return child;
   };
 
   return Klass;
